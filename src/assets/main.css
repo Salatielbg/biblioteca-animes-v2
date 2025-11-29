@@ -1,0 +1,39 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Em telas maiores não usamos grid no #app globalmente, pois quebra a responsividade
+     de components que já controlam sua largura via max-width/margin auto. */
+  body {
+    /* manter fluxo normal */
+    display: block;
+  }
+
+  #app {
+    /* forçar comportamento de bloco para respeitar max-width + margin:auto */
+    display: block;
+    padding: 0 2rem;
+    margin: 0 auto;
+    max-width: 1280px; /* reafirma o limite em telas grandes */
+  }
+}
