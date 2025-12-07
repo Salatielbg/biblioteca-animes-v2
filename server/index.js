@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { createClient } from '@supabase/supabase-js';
-import dotenv from 'dotenv';
-dotenv.config({ path: '../.env' });
+import swaggerConfig from '../src/docs/swagger.js';
+import animesRoutes from '../src/routes/animes.js';
+import { supabase } from '../src/config/supabase.js';
 
 const app = express();
 const port = 3000;
@@ -11,14 +11,10 @@ const port = 3000;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use('/animes', animesRoutes);
+swaggerConfig(app);
 
-const supabaseUrl = process.env.VITE_SUPABASE_URL;
-const supabaseKey = process.env.VITE_SUPABASE_KEY;
-// Supabase client
-const supabase = createClient(
-  supabaseUrl , // Substitua pela URL do seu projeto Supabase
-  supabaseKey // Substitua pela sua chave pública (anon key)
-);
+
 
 // Endpoints
 app.get('/animes', async (req, res) => {

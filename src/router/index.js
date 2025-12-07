@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+
 import { useAppStore } from '@/stores/app'
 
 const router = createRouter({
@@ -39,6 +40,7 @@ const router = createRouter({
       name: 'sobre',
       component: () => import('../views/AboutView.vue'),
     },
+    
   ],
 })
 
